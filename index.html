@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="jquery-2.2.4.js">
+
+    </script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<form id="login-form" action="jiracookie.php" method="post">
+    Username: <input id="username-input" type="text" name="username"/> <br>
+    password: <input  id="password-input" type="password" name="password"/>
+
+</form>
+
+<button id="login-button" > login in with cookie auth</button>
+<button id="profile-button">retrieve user profile</button>
+
+<script>
+    $('#login-button').click(function () {
+        $.ajax({
+            type: "POST",
+            url: "jiracookie.php",
+            data: $('#login-form').serialize(),
+            success: function (data) {
+                alert(data);
+            }
+        });
+    });
+
+
+
+    $('#profile-button').click(function () {
+        $.ajax({
+            type: "POST",
+            url: "jiraprofile.php",
+            data: $('#username-input').serialize(),
+            success: function (data) {
+                alert(data);
+            }
+
+        });
+    });
+</script>
+</body>
+</html>
